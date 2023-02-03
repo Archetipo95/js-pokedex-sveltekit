@@ -5,6 +5,7 @@
 
   export let monster: IndexMonster;
   export let isInteractive: boolean = false;
+
   const updateSearchParams = (key: string, value: string) => {
     const searchParams = new URLSearchParams($page.url.searchParams);
     searchParams.set(key, value);
@@ -16,7 +17,7 @@
 <div class="monster">
   <div
     on:click={() =>
-      isInteractive ? updateSearchParams("monsterId", monster.id) : () => {}}
+      isInteractive ? updateSearchParams("monster_id", monster.id) : () => {}}
   >
     <div class="monster-content">
       <img src={monster.image} alt={monster.name} />
@@ -27,7 +28,7 @@
     </div>
   </div>
   {#if isInteractive}
-    <div on:click={() => updateSearchParams("monsterId2", monster.id)}>
+    <div on:click={() => updateSearchParams("monster_id2", monster.id)}>
       Add Monster 2
     </div>
   {/if}
@@ -46,10 +47,14 @@
     margin: 10px;
     padding: 10px;
     position: relative;
-    background-color: #eee;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #eee;
+    box-shadow: 20px 20px 60px #cacaca, -20px -20px 60px #ffffff;
   }
   .monster:hover {
-    background-color: #ddd;
+    background: linear-gradient(145deg, #d6d6d6, #ffffff);
+    box-shadow: 20px 20px 60px #cacaca, -20px -20px 60px #ffffff;
   }
   .monster-content {
     display: flex;
